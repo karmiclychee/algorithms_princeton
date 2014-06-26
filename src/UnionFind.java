@@ -13,13 +13,11 @@ public class UnionFind {
         components[firstComponent] = components[secondComponent];
     }
 
-    public int find(int component) {
+    public int find(int componentId) {
         // finds the root of the component group
-        if (components[component] != component) {
-            return find(components[component]);
-        } else {
-            return component;
-        }
+        if (componentId < 0 || componentId >= components.length) throw new IndexOutOfBoundsException();
+        if (componentId != components[componentId]) return find(components[componentId]);
+        else return componentId;
     }
 
     public boolean connected(int firstComponent, int secondComponent) {
@@ -29,10 +27,10 @@ public class UnionFind {
     public static void main(String[] args) {
 // TODO: implement this.
         UnionFind uf = new UnionFind(12);
-        uf.union(1,2);
-        uf.union(2,6);
-        uf.union(6,9);
-        uf.union(9,11);
+        uf.union(1, 2);
+        uf.union(2, 6);
+        uf.union(6, 9);
+        uf.union(9, 11);
         System.out.println(uf.find(1));
         System.out.println(Arrays.toString(uf.components));
     }
