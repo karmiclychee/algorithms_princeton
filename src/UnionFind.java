@@ -3,7 +3,7 @@ public class UnionFind {
 
     public UnionFind(int numberOfComponents) {
         if (numberOfComponents < 0) throw new IllegalArgumentException();
-        components = new int[components];
+        components = new int[numberOfComponents];
         for (int i = 0; i < numberOfComponents; i++) components[i] = i;
     }
 
