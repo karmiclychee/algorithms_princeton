@@ -1,5 +1,7 @@
+import java.util.Arrays;
+
 public class UnionFind {
-    private int[] components;
+    public int[] components;
 
     public UnionFind(int numberOfComponents) {
         if (numberOfComponents < 0) throw new IllegalArgumentException();
@@ -8,7 +10,7 @@ public class UnionFind {
     }
 
     public void union(int firstComponent, int secondComponent) {
-        components[firstComponent] = components[secondComponent];
+        components[secondComponent] = components[firstComponent];
     }
 
     public int findRoot(int component) {
@@ -30,5 +32,13 @@ public class UnionFind {
     public static void main(String[] args) {
 // TODO: implement this.
         UnionFind uf = new UnionFind(12);
+        uf.union(1,2);
+        uf.union(1,3);
+        uf.union(1,6);
+        uf.union(2,6);
+        System.out.println(uf.connected(1,2));
+        System.out.println(uf.connected(1,3));
+        System.out.println(uf.findRoot(1));
+        System.out.println(Arrays.toString(uf.components));
     }
 }
