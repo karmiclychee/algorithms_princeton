@@ -9,21 +9,23 @@ public class QuickFindUF {
         for (int i = 0; i < numberOfComponents; i++) components[i] = i;
     }
 
-    public void union(int firstComponent, int secondComponent) {
-        if (connected (firstComponent, secondComponent)) return;
+    public void union(int firstSite, int secondSite) {
+        //sets site and all connected to the root of the second site
+        //iterates through all sites per union operation
+        if (connected (firstSite, secondSite)) return;
         for (int i = 0; i < components.length; i++) {
-            if (components[i] == components[firstComponent]) {
-                components[i] = components[secondComponent];
+            if (components[i] == components[firstSite]) {
+                components[i] = components[secondSite];
             }
         }
     }
 
-    public int find(int componentId) {
-        return components[componentId];
+    public int find(int siteId) {
+        return components[siteId];
     }
 
-    public boolean connected(int firstComponent, int secondComponent) {
-        return components[firstComponent] == components[secondComponent];
+    public boolean connected(int firstSite, int secondSite) {
+        return components[firstSite] == components[secondSite];
     }
 
     public static void main(String[] args) {
